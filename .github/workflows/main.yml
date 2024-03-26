@@ -25,11 +25,11 @@ jobs:
     
     - name: Build Docker image
       run: |
-        docker build -t test0107.azurecr.io/asg:${{ github.sha }} .
-        docker push test0107.azurecr.io/asg:${{ github.sha }}
+        docker build -t test0107.azurecr.io/asg:v1:${{ github.sha }} .
+        docker push test0107.azurecr.io/asg:v1:${{ github.sha }}
     - name: Pull Docker image from ACR
       run: |
-        docker pull test0107.azurecr.io/asg:${{ github.sha }}
+        docker pull test0107.azurecr.io/asg:v1:${{ github.sha }}
 
     - name: Deploy to AKS
       run: |
