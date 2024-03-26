@@ -26,16 +26,21 @@ jobs:
     - name: Pull Docker image from ACR
       run: |
         docker pull test0107.azurecr.io/asg:${{ github.sha }}
-    
-    - name: Set up kubectl
-      uses: azure/k8s-set-context@v1
-      with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
-        version: 'v1.21.0'  # Adjust Kubernetes version as needed
-    
+
     - name: Deploy to AKS
       run: |
+        az aks get-credentials --resource-group test --name project --overwrite-existing
         kubectl apply -f deployment.yaml
+    
+   # - name: Set up kubectl
+    #  uses: azure/k8s-set-context@v1
+   #   with:
+    #    kubeconfig: ${{ secrets.KUBE_CONFIG }}
+    #    version: 'v1.21.0'  # Adjust Kubernetes version as needed
+    
+  #  - name: Deploy to AKS
+   #   run: |
+  #      kubectl apply -f deployment.yaml
     
 #    - name: Build Docker image
  #     run: |
