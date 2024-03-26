@@ -32,11 +32,7 @@ jobs:
         docker pull test0107.azurecr.io/asg:${{ github.sha }}
     - name: Create Secret
       run: |
-        kubectl create secret docker-registry acr-secret \
-        --docker-server= test0107.azurecr.io \
-        --docker-username= bbbc71f9-f13a-4e01-a366-e4ef5270c9fe \
-        --docker-password= pPU8Q~w7sbZI9w11g_7UAAX8vLx90tsJS58dOaqt \
-        --docker-email=naveennadendla479@gmail.com
+        kubectl create secret docker-registry acr-secret --docker-server= test0107.azurecr.io --docker-username= bbbc71f9-f13a-4e01-a366-e4ef5270c9fe --docker-password= pPU8Q~w7sbZI9w11g_7UAAX8vLx90tsJS58dOaqt --docker-email=naveennadendla479@gmail.com
 
     - name: Deploy to AKS
       run: |
