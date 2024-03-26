@@ -19,17 +19,17 @@ jobs:
         docker login ${{ secrets.ACR_LOGIN_SERVER }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
         docker push ${{ secrets.ACR_LOGIN_SERVER }}test0107.azurecr.io/asg:${{ github.sha }}
     
-    - name: Pull Docker image from ACR
-      run: |
-        az acr login --name <acr-name>
-        docker pull ${{ secrets.ACR_LOGIN_SERVER }}test0107.azurecr.io/asg:${{ github.sha }}
+  #  - name: Pull Docker image from ACR
+   #   run: |
+  #      az acr login --name <acr-name>
+   #     docker pull ${{ secrets.ACR_LOGIN_SERVER }}test0107.azurecr.io/asg:${{ github.sha }}
     
-    - name: Set up kubectl
-      uses: azure/k8s-set-context@v1
-      with:
-        kubeconfig: ${{ secrets.KUBE_CONFIG }}
-        version: 'v1.21.0'  # Adjust Kubernetes version as needed
+ #   - name: Set up kubectl
+  #    uses: azure/k8s-set-context@v1
+  #    with:
+  #      kubeconfig: ${{ secrets.KUBE_CONFIG }}
+  #      version: 'v1.21.0'  # Adjust Kubernetes version as needed
     
-    - name: Deploy to AKS
-      run: |
-        kubectl apply -f path/to/your/kubernetes/manifests
+  #  - name: Deploy to AKS
+   #   run: |
+     #   kubectl apply -f path/to/your/kubernetes/manifests
