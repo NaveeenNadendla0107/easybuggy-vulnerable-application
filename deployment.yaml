@@ -15,6 +15,8 @@ spec:
       containers:
       - name: asgbuggy
         image: test0107.azurecr.io/asg
+        imagePullSecrets:
+      - name: acr-secret
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
