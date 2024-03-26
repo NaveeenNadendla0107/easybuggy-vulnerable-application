@@ -16,10 +16,10 @@ spec:
       - name: asgbuggy
         image: test0107.azurecr.io/asg
         imagePullPolicy: Always
-      imagePullSecrets:
-      - name: acr-secret
         ports:
         - containerPort: 8080
+      imagePullSecrets:
+      - name: acr-secret
 # service type loadbalancer       
 ---
 apiVersion: v1
