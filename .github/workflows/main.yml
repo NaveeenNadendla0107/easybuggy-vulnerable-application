@@ -15,14 +15,14 @@ jobs:
     
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/your-image-name:${{ github.sha }} .
+        docker build -t ${{ secrets.ACR_LOGIN_SERVER }}test0107.azurecr.io/asg:${{ github.sha }} .
         docker login ${{ secrets.ACR_LOGIN_SERVER }} -u ${{ secrets.ACR_USERNAME }} -p ${{ secrets.ACR_PASSWORD }}
-        docker push ${{ secrets.ACR_LOGIN_SERVER }}/your-image-name:${{ github.sha }}
+        docker push ${{ secrets.ACR_LOGIN_SERVER }}test0107.azurecr.io/asg:${{ github.sha }}
     
     - name: Pull Docker image from ACR
       run: |
         az acr login --name <acr-name>
-        docker pull ${{ secrets.ACR_LOGIN_SERVER }}/your-image-name:${{ github.sha }}
+        docker pull ${{ secrets.ACR_LOGIN_SERVER }}test0107.azurecr.io/asg:${{ github.sha }}
     
     - name: Set up kubectl
       uses: azure/k8s-set-context@v1
