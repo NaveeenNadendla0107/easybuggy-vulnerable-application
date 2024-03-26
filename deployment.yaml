@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: asgbuggy
-        image: test0107.azurecr.io/asg:v1
+        image: test0107.azurecr.io/asg
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
