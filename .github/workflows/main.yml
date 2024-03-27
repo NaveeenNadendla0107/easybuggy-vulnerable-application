@@ -36,17 +36,19 @@ jobs:
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Set kubectl context
-      uses: azure/aks-set-context@v1
+  #  - name: Set kubectl context
+   #   uses: azure/aks-set-context@v1
+   #   with:
+     #     creds: ${{ secrets.AZURE_CREDENTIALS }}
+     #     cluster-name: <cluster-name>
+     #     resource-group: <resource-group-name>
+
+    - uses: Azure/k8s-create-secret@v1
       with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          cluster-name: <cluster-name>
-          resource-group: <resource-group-name>
-
-    - name: Apply Kubernetes Secret
-      run: |
-          kubectl apply -f path/to/acr-secret.yaml
-
+        container-registry-url: test0107.azurecr.io/asg
+        container-registry-username: ${{ secrets.ACR_USERNAME }}
+        container-registry-password: ${{ secrets.ACR_PASSWORD }}
+        secret-name: k8s-secret
     - name: Deploy to AKS
       run: |
           kubectl apply -f path/to/deployment.yaml
